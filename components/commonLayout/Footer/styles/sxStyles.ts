@@ -7,11 +7,12 @@ export const styles = {
   } as SxProps<Theme>,
   collapsesTextTitles: {
     fontSize: '15px',
-    fontFamily: 'Source Code Pro',
-    fontWeight: 700
+    fontFamily: 'Rubik',
+    fontWeight: 700,
+    color: '#fff'
   },
   collapseItem: {
-    borderBottom: '1px solid #000',
+    borderBottom: '1px solid #fff',
     padding: '20px',
     display: 'flex',
     flexDirection: 'row',

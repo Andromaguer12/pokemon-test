@@ -95,12 +95,11 @@ export default function Header() {
         <div className={styles.delimeter}>
           <div className={[
             styles.logoAndSearch,
-            router.pathname.includes('pokemon') && styles.withBackground,
           ].join(' ')}>
             <Image
               src={Logo}
               className={styles.image}
-              alt={'pokemones-sol-logo'}
+              alt={'pokemon'}
             />
           </div>
           <div className={styles.buttons}>
@@ -112,7 +111,6 @@ export default function Header() {
                       key={button.id}
                       className={[
                         styles.headerButton,
-                        router.pathname.includes('pokemon') ? styles.secondaryStyle : '',
                       ].join(' ')}
                       onClick={() => button.toDiv ? handleRedirectToSection(button?.toDiv) : handleRedirect(button.link)}
                     >
@@ -124,7 +122,6 @@ export default function Header() {
             ) : (
               <Link className={[
                 styles.headerButton,
-                router.pathname.includes('pokemon') ? styles.secondaryStyle : '',
               ].join(' ')} href={AllRoutes.HOME}>
                 {t('pages.projectPage.backToHome')}
               </Link>
@@ -133,7 +130,7 @@ export default function Header() {
               onClick={handleListItemClick}
               className={styles.iconButtons}
             >
-              <Language style={{ color: !router.pathname.includes('pokemon') ? '#fff' : '#1769a8' }} />
+              <Language style={{ color: '#fff' }} />
             </IconButton>
             <CustomDropdown
               anchorEl={anchorEl}
@@ -199,8 +196,8 @@ export default function Header() {
               })}
             </>
           ) : (
-            <ListItem className={styles.headerButton} disablePadding>
-              <Link className={styles.headerButton} href={AllRoutes.HOME}>
+            <ListItem className={styles.headerButton}  disablePadding>
+              <Link className={styles.headerButton} style={{ textDecoration: "none"}} onClick={() => setOpenDrawer(false)} href={AllRoutes.HOME}>
                 <ListItemButton>
                   <Typography className={classes.itemTexts}>
                     {t('pages.projectPage.backToHome')}

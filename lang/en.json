@@ -1,5 +1,7 @@
 {
   "pages.header.home": "Home",
+  "home": "Home | Modern Pokedex",
+  "pokemonInfo": "Pokemon Info | Modern Pokedex",
   "pages.projectPage.backToHome": "Back to Home",
   "pages.home.pokemonsTitle": "All about Pokemons!",
   "pages.home.pokemonsTitle.section": "- POKEMONS LIST -",

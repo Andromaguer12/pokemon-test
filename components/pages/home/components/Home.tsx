@@ -53,6 +53,8 @@ const Home = () => {
     },
     [searchValue],
   )
+
+  const handleInput = (e) => setSearchValue(e.target.value.toLowerCase());
   
   useEffect(() => {
     if(currentPokemon) {
@@ -84,12 +86,12 @@ const Home = () => {
                   <Search style={{ marginRight: "10px"}} htmlColor="#0C92C1" />
                   <InputBase 
                     placeholder={t('searchByName')}
-                    onChange={handleSearch}
+                    onChange={handleInput}
                     className={styles.input}
                     sx={{ fontSize: "16px", width: "80%"}}
                   />
                 </div>
-                <div className={styles.button}>
+                <div onClick={handleSearch} className={styles.button}>
                   <Typography className={styles.textButton}>{t('search')}</Typography>
                 </div>
               </div>

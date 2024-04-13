@@ -26,6 +26,10 @@
     box-sizing: border-box;
     padding-top: 180px;
 
+    @media screen and (max-width: 900px) {
+      padding-top: 50px;
+    }
+
     .maxContainer{
       width: 100%;
       max-width: $max-width-layout;
@@ -34,6 +38,16 @@
       display: flex;
       flex-direction: row;
       justify-content: space-around;
+
+      @media screen and (max-width: 900px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      @media screen and (max-width: 500px) {
+        padding: 0 20px;
+        box-sizing: border-box;
+      }
       
       .pokemonsWelcome {
         width: 100%;
@@ -47,6 +61,11 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+
+        @media screen and (max-width: 500px) {
+          width: 100%;
+          box-sizing: border-box;
+        }
   
         .modernPokedex{
           font-family: "Rubik", sans-serif;
@@ -119,6 +138,10 @@
         height: 100%;
         width: auto;
         margin-left: 100px;
+
+        @media screen and (max-width: 900px) {
+          display: none;
+        }
       }
     }
 
@@ -151,7 +174,7 @@
   }
 
   @media screen and (max-width: 900px) {
-    height: fit-content;
+    // height: fit-content;
   }
 }
 

@@ -1,5 +1,7 @@
 {
   "pages.header.home": "Inicio",
+  "home": "Inicio | Modern Pokedex",
+  "pokemonInfo": "Informacion del Pokemon | Modern Pokedex",
   "pages.projectPage.backToHome": "Volver al Inicio",
   "pages.home.pokemonsTitle": "Todo sobre Pokemones!",
   "pages.home.pokemonsTitle.section": "- LISTA DE POKEMONES -",

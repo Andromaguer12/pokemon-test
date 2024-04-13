@@ -112,6 +112,7 @@ export default function Footer() {
                     {t(section?.title as string)}
                   </Typography>
                   <ExpandMore
+                    htmlColor='#fff'
                     sx={{
                       transition: 'all 500ms ease',
                       transform: openedCollapses.includes(

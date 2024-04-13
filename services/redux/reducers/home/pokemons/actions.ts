@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { PokemonCard } from '../../../../../typesDefs/constants/app/pokemons/pokemons.types';
+import { IPokemon } from '../../../../../typesDefs/constants/app/pokemons/pokemons.types';
 
 type initialStateType = {
   getPokemons: {
     loadingPokemons: boolean;
-    dataPokemons: PokemonCard[];
+    dataPokemons: IPokemon[];
     pageInfoPokemons: any;
     errorPokemons: null | any;
   };
   getPokemonById: {
     loadingPokemonById: boolean;
-    currentPokemon: PokemonCard | null;
+    currentPokemon: IPokemon | null;
     errorPokemonById: null | any;
   };
 };
@@ -58,7 +58,20 @@ export const getAllPokemons = createAsyncThunk(
               pkm
                 .json()
                 .then((responsepkm) => {
-                  res(responsepkm);
+                  const types = responsepkm.types.map((type) => type.type.name);
+
+                  params.context
+                    .getDataFromCompleteURL(responsepkm.species.url)
+                    .then((result) => result.json())
+                    .then((responsesp) => {
+                      res({
+                        ...responsepkm,
+                        species: responsesp
+                      });
+                    })
+                    .catch((errsp) => {
+                      rej(errsp);
+                    });
                 })
                 .catch((errpkm) => {
                   rej(errpkm);
@@ -91,7 +104,37 @@ export const getPokemonById = createAsyncThunk(
     if (query.status > 202) {
       return rejectWithValue(response?.message);
     }
-    return response;
+    const types = response.types.map((type) => type.type.name);
+    const weaknesses = {};
+
+    Promise.all(
+      types.map((type) =>
+        params.context.getDataFromCompleteURL(
+          `https://pokeapi.co/api/v2/type/${type}`
+        )
+      )
+    )
+      .then((responses) =>
+        Promise.all(responses.map((response) => response.json()))
+      )
+      .then((typeData) => {
+        typeData.forEach((data, i) => {
+          weaknesses[types[i]] = data.damage_relations.double_damage_from.map(
+            (type) => type.name
+          );
+        });
+      });
+
+    const speciesPromise = await params.context.getDataFromCompleteURL(
+      response.species.url
+    );
+    const species = await speciesPromise.json();
+
+    return {
+      ...response,
+      species,
+      weaknesses: Object.values(weaknesses).flat()
+    };
   }
 );
 

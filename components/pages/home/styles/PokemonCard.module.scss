@@ -15,6 +15,21 @@
   cursor: pointer;
   transition: all ease-in-out 150ms;
 
+  @media screen and (max-width: 640px) {
+    max-width: 47.5%; 
+    min-width: 47.5%;
+  }
+
+  @media screen and (max-width: 450px) {
+    max-width: 43.5%; 
+    min-width: 43.5%;
+  }
+
+  @media screen and (max-width: 400px) {
+    max-width: 100%; 
+    min-width: 100%;
+  }
+
   &:hover {
     border: 1px solid #ffffff;
     box-shadow: 0 10px 10px #e7e7e7;
@@ -42,6 +57,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
 
     .nameAndShare {
       width: 100%;
@@ -54,6 +70,14 @@
         font-family: $primary-font;
         text-transform: capitalize;
       }
+
+      .shareButton{
+        @media screen and (max-width: 640px) {
+          position: absolute;
+          top: -160px;
+          right: 10px;
+        }  
+      }
       
     }
 
@@ -63,11 +87,20 @@
       flex-direction: row;
       align-items: center;
 
+      @media screen and (max-width: 640px) {
+        flex-wrap: wrap;
+      }
+
       .typeCard {
         border: 1.5px solid transparent;
         padding: 0px 15px;
         border-radius: 12px;
         margin-right: 7px;
+
+        @media screen and (max-width: 640px) {
+          flex-wrap: wrap;
+          margin-bottom: 10px;
+        }
         
         .text {
           font-weight: 600;

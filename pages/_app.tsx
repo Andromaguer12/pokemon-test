@@ -27,7 +27,7 @@ const Module = ({ nextAPI }: { nextAPI: AppProps }) => {
 
   if (
     router.pathname === AllRoutes.HOME ||
-    router.pathname.includes(AllRoutes.POKEMON_PAGE)
+    router.pathname.includes(AllRoutes.ABOUT_POKEMON)
   ) {
     return (
       <DashboardHome showHeader showFooter>

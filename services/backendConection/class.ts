@@ -12,8 +12,8 @@ class BackendFetching {
         : process.env.NEXT_PUBLIC_APP_PROD_BACKEND_API;
     this.backendApiUrl =
       process.env.NODE_ENV === 'development'
-        ? process.env.NEXT_PUBLIC_APP_LOCAL_BACKEND_API + '/api/v2/'
-        : process.env.NEXT_PUBLIC_APP_PROD_BACKEND_API + '/api/v2/';
+        ? process.env.NEXT_PUBLIC_APP_LOCAL_BACKEND_API + '/api/v2'
+        : process.env.NEXT_PUBLIC_APP_PROD_BACKEND_API + '/api/v2';
   }
 
   httpCallable(url: string): (configs: RequestInit) => Promise<Response> {

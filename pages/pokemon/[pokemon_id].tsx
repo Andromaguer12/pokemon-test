@@ -11,7 +11,7 @@ export default function AboutMeView() {
   return (
     <>
       <Head>
-        <title>{getTitle('POKEMONPAGE')}</title>
+        <title>{getTitle('ABOUT_POKEMON')}</title>
       </Head>
       <PokemonPage pokemonId={pokemon_id as string} />
     </>

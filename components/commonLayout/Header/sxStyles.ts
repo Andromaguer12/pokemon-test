@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   },
   itemTexts: {
     fontSize: '14px',
-    fontFamily: 'Source Code Pro',
+    fontFamily: 'Rubik',
     color: '#fff'
   },
   socialButtonsResponsive: {
