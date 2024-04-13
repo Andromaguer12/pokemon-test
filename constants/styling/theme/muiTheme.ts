@@ -108,12 +108,12 @@ const typography = {
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#0d2c43',
-      dark: '#24374d'
+      main: '#0CA5DA',
+      dark: '#0C92C1'
     },
     secondary: {
-      main: '#e9c176',
-      dark: '#c59843'
+      main: '#FFD53A',
+      dark: '#E7BC27'
     },
     error: {
       main: '#FF4D4F',

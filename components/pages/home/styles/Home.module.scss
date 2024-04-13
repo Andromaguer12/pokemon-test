@@ -15,19 +15,133 @@
   .shadow{
     width: 100%;
     height: 100%;
-    background: $primary-color-alt-transparent;
+    // background: $primary-color-alt-transparent;
     position: absolute;
     top: 0;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-end;
-    padding: 50px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 50px 0;
     box-sizing: border-box;
+    padding-top: 180px;
+
+    .maxContainer{
+      width: 100%;
+      max-width: $max-width-layout;
+      height: 100%;
+      z-index: 2;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      
+      .pokemonsWelcome {
+        width: 100%;
+        height: 100%;
+        max-height: 450px;
+        max-width: 400px;
+        border-radius: 10px;
+        padding: 30px;
+        background: #ffffff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+  
+        .modernPokedex{
+          font-family: "Rubik", sans-serif;
+          font-size: 35px;
+          line-height: 38px;
+          color: $primary-color-alt;
+          margin: 0 auto;
+          text-align: center;
+          margin-bottom: 30px;
+        }
+
+        .text {
+          font-weight: 400;
+          font-family: "Rubik", sans-serif;
+          font-size: 16px;
+          line-height: 18px;
+          color: #7a7a7a;
+        }
+
+        .pokedex{
+          width: 90px;
+          height: 90px;
+          margin-bottom: 40px;
+        }
+
+        .searchBar {
+          width: 100%;
+          border-radius: 8px;
+          border: 2px solid $primary-color-alt;
+          padding: 10px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+
+          .barAndIcon {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 84%;
+
+            .icon {
+              font-size: 16px;
+              font-family: "Rubik", sans-serif;
+            }
+          }
+
+          .button {
+            padding: 10px;
+            height: fit-content;
+            background: $secondary-color;
+            border-radius: 8px;
+            cursor: pointer;
+
+            &:active {
+              background-color: #c29d1b;
+            }
+
+            .textButton {
+              color: $primary-color-alt;
+              font-weight: bold;
+              font-size: 16px;
+              font-family: "Rubik", sans-serif;
+            }
+          }
+        }
+      }
+
+      .imgashPikachu {
+        height: 100%;
+        width: auto;
+        margin-left: 100px;
+      }
+    }
+
+    .ashPikachu{
+      min-width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.8;
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-end;
+
+      
+    }
 
     .titles{
       color: #fff;
     }
+
   }
 
   .imageContainer {
@@ -131,7 +245,7 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 50px;
+        margin-bottom: 20px;
 
 
         .title {
@@ -158,18 +272,24 @@
             text-align: right;
           }
         }
+      }
 
-        @media screen and (max-width: 855px) {
-        }
+      .text {
+        width: 100%;
+        margin-bottom: 50px;
+
       }
 
       .pokemons{
         width: 100%;
         display: flex;
-        flex-direction: flex-start;
+        flex-direction: row;
         flex-wrap: wrap;
         align-items: center;
-        justify-content: space-between;
+
+        @media screen and (max-width: 855px) {
+          justify-content: space-around;
+        }
 
         .paginationContainer {
           width: 100%;

@@ -1,38 +1,23 @@
 import { RoutesClassification } from '../../typesDefs/constants/routes/types';
 
 export const RoutesHeadTitles = {
-  ADMIN_LOGIN: 'adminLogin',
-  ADMIN_DASHBOARD: 'adminDashboard',
   HOME: 'home',
-  POKEMONPAGE: 'pokemon',
-  ALLPROJECTS: 'all-pokemons'
+  ABOUT_POKEMON: 'pokemonInfo',
 };
 export const AllRoutes = {
-  ADMIN_LOGIN: '/admin-login',
-  ADMIN_DASHBOARD: '/admin/dashboard/',
-  POKEMON_PAGE: '/pokemon/',
   HOME: '/',
+  ABOUT_POKEMON: '/pokemon/',
 };
 
 export const AppRoutes: RoutesClassification = {
-  PRIVATE: {
-    ADMIN_DASHBOARD: {
-      path: AllRoutes.ADMIN_DASHBOARD,
-      exact: false
-    }
-  },
   PUBLIC: {
     HOME: {
       path: AllRoutes.HOME,
       exact: false
     },
-    POKEMON_PAGE: {
+    ABOUT_POKEMON: {
       path: AllRoutes.HOME,
       exact: false
     },
-    ADMIN: {
-      path: AllRoutes.ADMIN_LOGIN,
-      exact: true
-    }
   }
 };

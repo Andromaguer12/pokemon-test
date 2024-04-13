@@ -1,6 +1,6 @@
 import { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
 import DashboardHome from '../components/commonLayout/Dashboard/DashboardHome';
 import { AllRoutes } from '../constants/routes/routes';
@@ -12,12 +12,9 @@ import { ThemeProvider } from '@mui/material';
 import theme from '../constants/styling/theme/muiTheme';
 import FetchingContext from '../contexts/backendConection/context';
 import BackendFetching from '../services/backendConection/class';
-import store, { useAppDispatch } from '../services/redux/store';
+import store from '../services/redux/store';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
-import Cookies from 'js-cookie'
-import { jwtDecode } from 'jwt-decode';
-import { setUserDataFromToken } from '../services/redux/reducers/user/actions';
 
 const translations = {
   es,
@@ -26,22 +23,7 @@ const translations = {
 
 const Module = ({ nextAPI }: { nextAPI: AppProps }) => {
   const router = useRouter();
-  const { Component, pageProps } = nextAPI;
-  const token = Cookies.get("accessToken");
-  const dispatch = useAppDispatch()
-
-  const handleRefreshSession = async (tok: string) => {
-    if(tok){
-      const decoded = jwtDecode(tok)
-
-      dispatch(setUserDataFromToken(decoded))
-    }
-  }
- 
-  useEffect(() => {
-    handleRefreshSession(token);
-  }, [token])
-  
+  const { Component, pageProps } = nextAPI;  
 
   if (
     router.pathname === AllRoutes.HOME ||
@@ -54,18 +36,9 @@ const Module = ({ nextAPI }: { nextAPI: AppProps }) => {
     );
   }
 
-  if (
-    router.pathname === AllRoutes.ADMIN_LOGIN
-  ) {
-    return (
-      <DashboardHome>
-        <Component {...pageProps} />
-      </DashboardHome>
-    );
-  }
-
   return <Component {...pageProps} />;
 };
+
 export default function MyApp(props: AppProps) {
   const { locale, locales } = useRouter();
   const backendFetchingClass = new BackendFetching();

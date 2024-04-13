@@ -1,28 +1,14 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import { Skeleton } from '@mui/material';
+import styles from '../styles/SkeletonPokemonCard.module.scss'
 
 export default function SkeletonProjectCard() {
   return (
-    <Card sx={{ maxWidth: 345, marginBottom: '20px' }}>
-      <Skeleton variant="rectangular" width={345} height={180} />
-      <CardContent>
-        <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
-        <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
-        <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
-        <Skeleton variant="text" sx={{ fontSize: '1rem' }} />
-        
-        <Skeleton variant="text" sx={{ fontSize: '1rem' }} width={210} />
-      </CardContent>
-      <CardActions disableSpacing>
-        <Skeleton
-          variant="circular"
-          sx={{ marginRight: '10px' }}
-          width={30}
-          height={30}
-        />
+    <div className={styles.cardContainer}>
+      <Skeleton variant="rectangular" width={150} height={150} sx={{ borderRadius: "7px" }} />
+      <CardActions disableSpacing sx={{ width: "100%"}}>
+        <Skeleton variant="text" sx={{ fontSize: '2rem', width: "80%", marginRight: "10px" }} />
         <Skeleton
           variant="circular"
           sx={{ marginRight: '10px' }}
@@ -30,6 +16,10 @@ export default function SkeletonProjectCard() {
           height={30}
         />
       </CardActions>
-    </Card>
+      <CardActions disableSpacing sx={{ width: "100%", paddingBottom: 0}}>
+        <Skeleton variant="rectangular" width={70} height={25} sx={{ borderRadius: "12px", marginRight: "10px" }} />
+        <Skeleton variant="rectangular" width={70} height={25} sx={{ borderRadius: "12px", marginRight: "10px" }} />
+      </CardActions>
+    </div>
   );
 }

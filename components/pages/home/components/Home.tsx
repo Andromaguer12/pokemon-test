@@ -1,38 +1,66 @@
-import React, {useEffect, useState} from 'react'
+import React, {useCallback, useEffect, useState} from 'react'
 import styles from '../styles/Home.module.scss'
 import background from '../../../../assets/pages/home/background.jpg'
 import Image from 'next/image'
-import { MenuItem, Pagination, Select, Typography } from '@mui/material'
+import { InputBase, Pagination, Typography } from '@mui/material'
 import useTranslation from '../../../../hooks/translation/useTranslation'
 import PokemonCard from './PokemonCard'
 import SkeletonPokemonCard from './SkeletonPokemonCard'
 import { useAppDispatch, useAppSelector } from '../../../../services/redux/store'
-import { PokemonBarSections } from '../../../../constants/components/pages/SkillsBar/skillsBar';
-import FeatureCard from './FeatureCard'
-import { Warning } from '@mui/icons-material'
+import { Search, Warning } from '@mui/icons-material'
 import { convertObjToRequestParams } from '../../../../utils/helpers/convert-obj-to-request-params'
-import { getAllPokemons } from '../../../../services/redux/reducers/home/pokemons/actions'
 import useFetchingContext from '../../../../contexts/backendConection/hook'
+import { getAllPokemons, getPokemonById } from '../../../../services/redux/reducers/home/pokemons/actions'
+import pokeball from '../../../../assets/pages/home/pokeball.png'
+import ashPikachu from '../../../../assets/pages/home/ashPikachu.png'
 
 const Home = () => {
   const  { t } = useTranslation()
   const dispatch = useAppDispatch()
 
+  const [searchValue, setSearchValue] = useState("")
+
   const [page, setPage] = useState<number>(0)
   const rowsPerPage = 15;
   const fContext = useFetchingContext()
 
+  const {
+    getPokemons: {
+      loadingPokemons,
+      dataPokemons,
+      pageInfoPokemons,
+      errorPokemons
+    },
+    getPokemonById: {
+      currentPokemon,
+    }
+  } = useAppSelector(({ pokemons }) => pokemons);
+
   useEffect(() => {
     dispatch(getAllPokemons({
       context: fContext,
-      filters: convertObjToRequestParams({
-        page,
-        limit: rowsPerPage
-      })
+      offset: page,
     }))
   }, [page, rowsPerPage])
 
-  const { getPokemons: { loadingPokemons, dataPokemons, pageInfoPokemons, errorPokemons } } = useAppSelector(({ pokemons }) => pokemons)
+  const handleSearch = useCallback(
+    () => {
+      if(searchValue.length > 0)
+        dispatch(getPokemonById({
+          context: fContext,
+          pokemonId: searchValue
+        }))
+    },
+    [searchValue],
+  )
+  
+  useEffect(() => {
+    if(currentPokemon) {
+      const element = document.getElementById('pokemons-container');
+      if (element) element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [currentPokemon])
+  
 
   return (
     <>
@@ -43,24 +71,36 @@ const Home = () => {
           className={styles.imageContainer}
         />
         <div className={styles.shadow}>
-          <div className={styles.texts}>
-            <Typography variant='h1' className={styles.titles}>
-              {t('pages.home.mainTitle')}
-            </Typography>
-            <Typography variant='h6' className={styles.titles}>
-              {t('pages.home.mainSubtitle')}
-            </Typography>
+          <div className={styles.ashPikachu}>
+          </div>
+          <div className={styles.maxContainer}>
+            <div className={styles.pokemonsWelcome}>
+              <div className={styles.mainText}>
+                <Typography className={styles.modernPokedex}>Modern Pokedex</Typography>
+                <Typography className={styles.text}>{t('pages.home.welcome')}</Typography>
+              </div>
+              <div className={styles.searchBar}>
+                <div className={styles.barAndIcon}>
+                  <Search style={{ marginRight: "10px"}} htmlColor="#0C92C1" />
+                  <InputBase 
+                    placeholder={t('searchByName')}
+                    onChange={handleSearch}
+                    className={styles.input}
+                    sx={{ fontSize: "16px", width: "80%"}}
+                  />
+                </div>
+                <div className={styles.button}>
+                  <Typography className={styles.textButton}>{t('search')}</Typography>
+                </div>
+              </div>
+              <Image className={styles.pokedex} src={pokeball} width={120} height={100} alt="pokedex" />
+            </div>
+            <Image className={styles.imgashPikachu} src={ashPikachu} alt="pokedex" />
+
           </div>
         </div>
       </div>
-      <div className={styles.skillsInfoContainer}>
-        <div className={styles.maxContainer}>
-          {PokemonBarSections.map((d) => {
-            return <FeatureCard key={d.title} item={d} />;
-          })}
-        </div>
-      </div>
-      <div className={styles.aboutUsContainer} id="projects-container">
+      <div className={styles.aboutUsContainer} id="pokemons-container">
         <div className={styles.maxContainer}>
           <div className={styles.mixedProjectsContainer}>
             <div className={styles.sectionTitle}>
@@ -72,9 +112,12 @@ const Home = () => {
                 {t('pages.home.pokemonsTitle.section')}
               </p>
             </div>
+            <p className={styles.text}>
+              {t('pages.home.pokemonsText')}
+            </p>
             {loadingPokemons && (
               <div className={styles.pokemons}>
-                {Array(6).fill(1).map((_i, index) => (
+                {Array(8).fill(1).map((_i, index) => (
                   <SkeletonPokemonCard key={index} />
                 ))}
               </div>
@@ -84,7 +127,7 @@ const Home = () => {
                 return <PokemonCard key={item._id} item={item} />
               })}
               <div className={styles.paginationContainer}>
-                <Pagination onChange={(_e, newValue) => setPage(newValue)} count={pageInfoPokemons?.totalPages} variant="outlined" color="primary" />
+                <Pagination onChange={(_e, newValue) => setPage(newValue)} page={page} count={pageInfoPokemons?.totalPages} variant="outlined" color="primary" />
               </div>
             </div>}
             {errorPokemons && (

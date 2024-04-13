@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import thunkMiddleware from 'redux-thunk';
 import { combineReducers } from '@reduxjs/toolkit';
-import user from './reducers/user/actions';
 import pokemons from './reducers/home/pokemons/actions';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 const reducers = combineReducers({
-  user,
-  pokemons,
+  pokemons
 });
 
 const store = configureStore({

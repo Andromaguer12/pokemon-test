@@ -51,8 +51,8 @@ class BackendFetching {
    * home endpoints
    */
 
-  async getAllPokemons(filters?: string) {
-    const url = '/pokemon' + (filters ?? '');
+  async getAllPokemons(page: number) {
+    const url = `/pokemon?limit=15&offset=${page}`;
     return await this.httpCallable(url)({
       mode: 'cors',
       method: 'GET'
@@ -60,8 +60,15 @@ class BackendFetching {
   }
 
   async getPokemonById(id: string) {
-    const url = '/pokemon' + (id ?? '');
-    return await this.httpCallable(url)({
+    const url = '/pokemon/' + (id ?? '');
+    return this.httpCallable(url)({
+      mode: 'cors',
+      method: 'GET'
+    });
+  }
+
+  async getDataFromCompleteURL(url: string) {
+    return fetch(url, {
       mode: 'cors',
       method: 'GET'
     });

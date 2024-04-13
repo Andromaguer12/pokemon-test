@@ -217,7 +217,8 @@ export default function Footer() {
                     : styles.containers
                 }
                 style={{
-                  alignItems: section.alignRight ? 'flex-end' : 'flex-start'
+                  alignItems: section.alignRight ? 'flex-end' : 'flex-start',
+                  justifyContent: section.brandLogo ? 'flex-end': 'flex-start'
                 }}
               >
                 {section.showLogo && (
