@@ -1,0 +1,17 @@
+.cardContainer { 
+  max-width: 280px; 
+  min-width: 280px; 
+  margin-bottom: 20px;
+  border: 1px solid #e7e7e7;
+  border-radius: 6px;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 10px;
+
+  .cardText {
+    padding: 20px 0;
+  }
+}

@@ -1,0 +1,822 @@
+@import '../../../../constants/styling/theme/variables.scss';
+
+.homePageContainer {
+  width: 100%;
+  height: 50vh;
+  box-sizing: border-box;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+
+  .shadow{
+    width: 100%;
+    height: 100%;
+    // background: $primary-color-alt-transparent;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: 50px;
+    box-sizing: border-box;
+    padding-top: 180px;
+
+  }
+
+  .imageContainer {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+}
+
+.aboutUsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $white;
+  padding: 0;
+
+  .pokemonImage {
+    width: 100%;
+    height: 110px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .typeRingAndImage {
+      width: 220px;
+      height: 220px;
+      min-width: 220px;
+      min-height: 220px;
+      background-color: #fff;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-110px);
+
+      .typeRing {
+        width: 210px;
+        height: 210px;
+        min-width: 210px;
+        min-height: 210px;
+        background-color: #fff;
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .imageContainer{
+          width: 200px;
+          height: 200px;
+          min-width: 200px;
+          min-height: 200px;
+          background-color: #fff;
+          border-radius: 50%;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          
+          .image{
+            width: 100%;
+            height: 100%; 
+          }
+        }
+      }
+    }
+
+
+  }
+
+  .maxContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 20px;
+    max-width: $max-width-layout;
+
+    .datas{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+
+      @media screen and (max-width: 550px) {
+        flex-direction: column-reverse;
+      }
+
+      .pokemonDatas {
+        width: 62.5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @media screen and (max-width: 550px) {
+          width: 100% !important;
+        }
+
+        .imageContainer{
+          width: 100%;
+          height: auto;
+          min-width: 100%;
+          min-height: auto;
+          overflow: hidden;
+          
+          .image{
+            width: 100%;
+
+            @media screen and (max-width: 550px) {
+              display: none;
+            }
+          }
+        }
+
+        .name {
+          width: 100%;
+          font-weight: 600;
+          font-size: 45px;
+          line-height: 49px;
+          font-family: "Rubik", sans-serif;
+          color: #000000;
+          margin-top: 50px;
+          margin-bottom: 30px;
+          text-transform: capitalize;
+        }
+
+        .description {
+          font-weight: 400;
+          font-family: "Rubik", sans-serif;
+          font-size: 16px;
+          line-height: 18px;
+          color: #7a7a7a;
+          text-align: left;
+          width: 100%;
+        }
+
+        .subtitles{
+          width: 100%;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 19px;
+          font-family: "Rubik", sans-serif;
+          color: #000000;
+          margin-bottom: 15px;
+          text-transform: capitalize;
+        }
+
+        .types {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: center;
+          margin-bottom: 20px;
+
+          .typeCard {
+            border: 1.5px solid transparent;
+            padding: 0px 15px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            margin-right: 7px;
+            
+            .text {
+              font-weight: 600;
+              font-size: 12px;
+              text-transform: capitalize;
+            }
+          }
+        }
+
+        .divisor{
+          width: 100%;
+          margin: 30px 0;
+          height: 1px;
+          background-color: #b8b8b8;
+        }
+
+        .stats {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          margin-bottom: 30px;
+
+          @media screen and (max-width: 550px) {
+            margin-bottom: 0;
+          }
+    
+          .statCard{
+            padding: 7px 10px;
+            border-radius: 8px;
+            background-color: #e7e7e7;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+
+            .statName{
+              width: 100%;
+              font-weight: 600;
+              font-size: 12px;
+              line-height: 16px;
+              font-family: "Rubik", sans-serif;
+              color: #000000;
+              text-transform: capitalize;
+              margin-bottom: 7.5px;
+            }
+    
+          }
+        }
+
+        .dataLabels {
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          flex-wrap: wrap;
+
+          @media screen and (max-width: 550px) {
+            margin-bottom: 30px;
+          }
+    
+          .label{
+            border-radius: 8px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            
+            .labelName{
+              font-weight: 600;
+              font-size: 12px;
+              line-height: 16px;
+              margin-right: 5px;
+              font-family: "Rubik", sans-serif;
+              color: #000000;
+              text-transform: capitalize;
+            }
+            
+            .data {
+              font-weight: 400;
+              font-size: 12px;
+              line-height: 16px;
+              font-family: "Rubik", sans-serif;
+              color: #7a7a7a;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.skillsInfoContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  overflow-x: auto;
+  padding: 0;
+  scrollbar-width: none;
+
+  .title {
+    font-size: 15px;
+    color: #7a7a7a;
+    font-family: $primary-font;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .maxContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 20px;
+
+    @media screen and (max-width: 1200px) {
+      justify-content: flex-start;
+    }
+
+    .skillCard {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      margin: 0 12px;
+      min-width: 250px;
+      max-width: 300px;
+
+      .texts{
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+
+        .title {
+          font-size: 15px;
+          color: $black;
+          font-family: $secondary-font;
+          margin: 10px 0;
+          margin-bottom: 2px;
+          text-align: left;
+          font-weight: bold;
+        }
+  
+        .note {
+          font-size: 10px;
+          color: $black;
+          font-family: $tertiary-font;
+          margin-bottom: 20px;
+          text-align: left;
+        }
+      }
+
+
+      .icon{
+        margin: 0 10px;
+      }
+
+      
+
+      .onlyImage {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .maxContainerSkillsInfoContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 20px;
+
+    @media screen and (max-width: 1200px) {
+      justify-content: flex-start;
+      overflow-x: auto;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .skillCard {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 12px;
+      min-width: 250px;
+      max-width: 250px;
+
+      .title {
+        font-size: 15px;
+        color: $black;
+        font-family: $secondary-font;
+        margin: 10px 0;
+        text-align: center;
+        font-weight: bold;
+        width: 90%;
+      }
+
+      .note {
+        font-size: 12px;
+        color: $black;
+        font-family: $tertiary-font;
+        margin-bottom: 20px;
+        text-align: center;
+        width: 90%;
+      }
+
+      .onlyImage {
+        width: 100%;
+        height: auto;
+      }
+    }
+  }
+}
+
+.parentContainer {
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: fit-content;
+  transition: all 1s ease;
+  box-sizing: border-box;
+
+  .maxContainer {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: $max-width-layout;
+
+    @media screen and (max-width: 900px) {
+      flex-direction: column;
+    }
+
+    .divider {
+      width: 100%;
+      height: 1px;
+      background-image: linear-gradient(to right, transparent, #e7e7e7, transparent);
+    }
+
+    .divider2 {
+      width: 100%;
+      height: 1px;
+      background-image: linear-gradient(to right, transparent, #e7e7e7, #b8b8b8, #e7e7e7, transparent);
+    }
+
+    .mixedProjectsContainer {
+      display: flex;
+      flex-flow: column;
+      align-items: flex-start;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding-top: 30px;
+      box-sizing: border-box;
+
+      .sectionTitle {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .title {
+          font-size: 45px;
+          color: $secondary-text-color;
+          font-family: $secondary-font;
+          margin-bottom: 20px;
+
+          @media screen and (max-width: 855px) {
+            font-size: 35px;
+            text-align: left;
+          }
+
+          @media screen and (max-width: 755px) {
+            font-size: 30px;
+            text-align: left;
+          }
+        }
+
+        .section {
+          font-size: 12px;
+          font-family: $secondary-font;
+          color: #7a7a7a;
+          @media screen and (max-width: 855px) {
+            text-align: right;
+          }
+        }
+
+        @media screen and (max-width: 855px) {
+        }
+      }
+
+      .text {
+        font-size: 14px;
+        font-family: $tertiary-font;
+        color: #7a7a7a;
+        margin-bottom: 24px;
+      }
+    }
+
+    .cardsContainer {
+      width: 100%;
+      display: flex; 
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .searchInputs {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+      margin-top: 20px;
+
+      @media screen and (max-width: 880px) {
+        flex-direction: column;
+        height: fit-content;
+      }
+
+      .button {
+        width: 150px;
+        padding: 10px;
+        border: 0.5px solid #fafafa31;
+        color: #fff;
+        margin-top: 20.89px;
+        height: 58.88px;
+        background-image: linear-gradient(
+          to right bottom,
+          $primary-color-alt-transparent,
+          $primary-color-alt-transparent-2,
+          $primary-color-alt-transparent-2,
+          $primary-color-alt-transparent
+        );
+
+        @media screen and (max-width: 750px) {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+      }
+
+      .formContainer {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .filtersHeader{
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          justify-content: space-between;
+          
+          @media screen and (max-width: 750px) {
+            flex-direction: column;
+          }
+
+          .input {
+            width: 85%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+
+            @media screen and (max-width: 750px) {
+              width: 100%;
+            }
+          }
+        }
+
+        .filters {
+          width: 100%;
+          display: flex;
+          flex-flow: row wrap;
+          align-items: flex-start;
+          justify-content: space-between;
+
+          @media screen and (max-width: 600px) {
+            display: none;
+          }
+
+          .list{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 200px;
+            margin-bottom: 20px;
+
+            @media screen and (max-width: 750px) {
+              width: 100%;
+            }
+
+            .title {
+              font-weight: 600;
+              font-family: $primary-font;
+              font-size: 14px;
+              margin-bottom: 10px;
+            }
+
+            .listOfCheckboxes{
+              padding: 10px 10px;
+              display: flex;
+              flex-direction: column;
+              align-items: flex-start;
+              width: 100%;
+              max-height: 200px;
+              overflow: auto;
+              overflow-x: hidden;
+              &::-webkit-scrollbar {
+                width: 5px;
+              };
+              &::-webkit-scrollbar-track {
+                background: #f1f1f1;
+              }
+              &::-webkit-scrollbar-thumb {
+                background: #888;
+              }
+              &::-webkit-scrollbar-thumb:hover {
+                background: #555,
+              }
+            }
+          }
+
+          .timeFilters {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 280px;
+
+            .title {
+              font-weight: 600;
+              font-family: $primary-font;
+              font-size: 14px;
+              margin-bottom: 10px;
+            }
+
+            .fromTo{
+              width: 100%;
+              margin-top: 10px;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+            }
+          }
+        }
+
+        .filtersResponsive {
+          width: 100%;
+          display: none;
+          
+          @media screen and (max-width: 600px) {
+            display: block;
+          }
+
+          .collapsesTextTitles{
+            .title {
+              font-weight: 600;
+              font-family: $primary-font;
+              font-size: 14px;
+              margin-bottom: 10px;
+            }
+          }
+        }
+
+        @media screen and (max-width: 880px) {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+
+        .formLabel {
+          width: 100%;
+          font-family: $tertiary-font;
+          color: $primary-color-alt;
+          font-size: 14px;
+          font-weight: 800;
+          margin-bottom: 5px;
+          box-sizing: border-box;
+          
+        }
+
+        .textFields {
+          margin-bottom: 20px;
+        }
+
+        .messageSubjects {
+          width: 100%;
+          padding: 10px;
+          box-sizing: border-box;
+        }
+      }
+
+      .infoContainer {
+        width: 45%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        border-radius: 20px;
+        padding: 30px;
+        box-sizing: border-box;
+        box-shadow: 0 0.5rem 1rem -0.25rem #5c5c5c;
+        background-image: linear-gradient(
+          to top right,
+          $secondary-color,
+          $black
+        );
+
+        @media screen and (max-width: 880px) {
+          width: 100%;
+        }
+
+        .socialMediaGrid {
+          width: 100%;
+
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+
+        .infos {
+          width: 100%;
+
+          .listItems {
+            margin-left: 10px;
+            font-weight: bold;
+            margin-bottom: 7px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            margin-left: 0;
+            border-radius: 6px;
+            padding: 7.5px 10px;
+            box-sizing: border-box;
+            border: 0.5px solid transparent;
+            font-family: $tertiary-font;
+            & > div {
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: flex-start;
+            }
+
+            .copyButton {
+              cursor: pointer;
+            }
+
+            &:hover {
+              transition: all ease 500ms;
+              border: 0.5px solid #fafafa31;
+              background-image: linear-gradient(
+                to right bottom,
+                $primary-color-alt-transparent,
+                $primary-color-alt-transparent-2,
+                $primary-color-alt-transparent-2,
+                $primary-color-alt-transparent
+              );
+              p {
+                font-size: 14px;
+                color: #fafafa;
+              }
+            }
+
+            @media screen and (max-width: 900px) {
+            }
+
+            p {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.horizontalDivider {
+  width: 100%;
+  max-width: $max-width-layout;
+  height: 1px;
+  margin-bottom: 10px;
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    #e7e7e7,
+    transparent
+  );
+}
