@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styles from '../styles/PokemonPage.module.scss';
 import background from '../../../../assets/pages/home/background.jpg'
 import {
@@ -8,10 +8,10 @@ import {
 } from '../../../../services/redux/store';
 import useFetchingContext from '../../../../contexts/backendConection/hook';
 import useTranslation from '../../../../hooks/translation/useTranslation';
-import { getPokemonById } from '../../../../services/redux/reducers/home/pokemons/actions';
+import { clearPokemonById, getPokemonById } from '../../../../services/redux/reducers/home/pokemons/actions';
 import Image from 'next/image';
 import { pokemonTypesColor } from '../../home/constants/pokemonTypesColor';
-import { Typography } from '@mui/material';
+import { CircularProgress, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import { generalData } from '../../home/constants/pokemonGeneralData';
@@ -43,7 +43,6 @@ const PokemonPage = ({ pokemonId }: PokemonPageProps) => {
     getPokemonById: {
       loadingPokemonById,
       currentPokemon,
-      errorPokemonById
     }
   } = useAppSelector(({ pokemons }) => pokemons);
 
@@ -63,6 +62,13 @@ const PokemonPage = ({ pokemonId }: PokemonPageProps) => {
       );
     }
   }, [pokemonId]);
+  
+  useEffect(() => {
+    return () => {
+      dispatch(clearPokemonById())
+    }
+  }, [])
+  
 
   return (
     <>
@@ -77,19 +83,18 @@ const PokemonPage = ({ pokemonId }: PokemonPageProps) => {
       </div>
       <div className={styles.aboutUsContainer} id="pokemons-container">
       <div className={styles.pokemonImage}>
-        {currentPokemon && (
           <div className={styles.typeRingAndImage}>
-            <div className={styles.typeRing} style={{ backgroundColor: pokemonTypesColor[currentPokemon.types[0].type.name] }}>
+            <div className={styles.typeRing} style={{ backgroundColor: pokemonTypesColor[currentPokemon ? currentPokemon?.types[0]?.type?.name : ""] ?? "#7a7a7a" }}>
               <div className={styles.imageContainer}>
-                <img 
+                {currentPokemon && <img 
                   src={currentPokemon.sprites.front_default}
                   alt="pokemon-front"
                   className={styles.image}
-                />
+                />}
+                {loadingPokemonById && <CircularProgress size={"50px"} />}
               </div>
             </div>
           </div>
-        )}
       </div>
         <div className={styles.maxContainer}>
           {currentPokemon && <div className={styles.datas}>
@@ -116,9 +121,9 @@ const PokemonPage = ({ pokemonId }: PokemonPageProps) => {
                   {t("weaknesses")}:
                 </Typography>
                 <div className={styles.types}>
-                  {currentPokemon.weaknesses && currentPokemon.weaknesses.map((type) => {
+                  {currentPokemon.weaknesses && currentPokemon.weaknesses.map((type, index) => {
                     return (
-                      <div className={styles.typeCard} style={{ borderColor: pokemonTypesColor[type], backgroundColor: pokemonTypesColor[type]+"1f"}} key={type.slot}>
+                      <div className={styles.typeCard} style={{ borderColor: pokemonTypesColor[type], backgroundColor: pokemonTypesColor[type]+"1f"}} key={index}>
                         <Typography style={{ color: pokemonTypesColor[type] }} className={styles.text}>{t(type)}</Typography>
                       </div>
                     )

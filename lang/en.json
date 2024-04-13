@@ -34,5 +34,17 @@
   "dragon": "Dragon",
   "dark": "Dark",
   "steel": "Steel",
-  "fairy": "Fairy"
+  "fairy": "Fairy",
+  "type": "Type",
+  "weaknesses": "Weaknesses",
+  "stats": "Stats",
+  "hp": "hp",
+  "attack": "Attack",
+  "defense": "Defense",
+  "special-attack": "Special Attack",
+  "special-defense": "Special Defense",
+  "speed": "Speed",
+  "generalInfo": "General Information",
+  "abilities": "Abilities",
+  "hidden": "(hidden)"
 }

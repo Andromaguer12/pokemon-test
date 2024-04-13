@@ -16,6 +16,7 @@ export interface IPokemon {
   species: INamedApiResource<IPokemonSpecies>;
   stats: IPokemonStat[];
   types: IPokemonType[];
+  weaknesses: PokemonType[];
 }
 
 enum PokemonType {
@@ -47,7 +48,10 @@ export interface IPokemonAbility {
 
 export interface IPokemonType {
   slot: number;
-  type: PokemonType;
+  type: {
+    name: string;
+    url: string;
+  };
 }
 
 export interface IPokemonHeldItem {

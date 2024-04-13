@@ -8,9 +8,8 @@ import PokemonCard from './PokemonCard'
 import SkeletonPokemonCard from './SkeletonPokemonCard'
 import { useAppDispatch, useAppSelector } from '../../../../services/redux/store'
 import { Search, Warning } from '@mui/icons-material'
-import { convertObjToRequestParams } from '../../../../utils/helpers/convert-obj-to-request-params'
 import useFetchingContext from '../../../../contexts/backendConection/hook'
-import { getAllPokemons, getPokemonById } from '../../../../services/redux/reducers/home/pokemons/actions'
+import { clearPokemons, getAllPokemons, getPokemonById } from '../../../../services/redux/reducers/home/pokemons/actions'
 import pokeball from '../../../../assets/pages/home/pokeball.png'
 import ashPikachu from '../../../../assets/pages/home/ashPikachu.png'
 
@@ -57,12 +56,17 @@ const Home = () => {
   const handleInput = (e) => setSearchValue(e.target.value.toLowerCase());
   
   useEffect(() => {
-    if(currentPokemon) {
+    if(currentPokemon && searchValue.length > 0) {
       const element = document.getElementById('pokemons-container');
       if (element) element.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [currentPokemon])
-  
+  }, [currentPokemon, searchValue])
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearPokemons())
+    }
+  }, [])
 
   return (
     <>
@@ -126,7 +130,7 @@ const Home = () => {
             )}
             {!loadingPokemons && <div className={styles.pokemons}>
               {!loadingPokemons && dataPokemons && dataPokemons.map((item) => {
-                return <PokemonCard key={item._id} item={item} />
+                return <PokemonCard key={item.id} item={item} />
               })}
               <div className={styles.paginationContainer}>
                 <Pagination onChange={(_e, newValue) => setPage(newValue)} page={page} count={pageInfoPokemons?.totalPages} variant="outlined" color="primary" />

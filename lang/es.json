@@ -34,5 +34,17 @@
   "dragon": "Dragón",
   "dark": "Siniestro",
   "steel": "Acero",
-  "fairy": "Hada"
+  "fairy": "Hada",
+  "type": "Tipo",
+  "weaknesses": "Debilidades",
+  "stats": "Estadisticas",
+  "hp": "hp",
+  "attack": "Ataque",
+  "defense": "defensa",
+  "special-attack": "Ataque Especial",
+  "special-defense": "Defense Especial",
+  "speed": "Velocidad",
+  "generalInfo": "Informacion general",
+  "abilities": "Habilidades",
+  "hidden": "(oculto)"
 }

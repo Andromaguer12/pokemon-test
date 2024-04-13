@@ -1,18 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { IPokemon } from '../../../../typesDefs/constants/app/pokemons/pokemons.types';
 import { Female, Male } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 
 export const generalData = (pokemon: IPokemon, styles: any) => [
-  {
-    label: "category",
-    name: "category",
-    value: (
-      <>
-        {pokemon?.flavor_text_entries}
-      </>
-    )
-  },
   {
     label: "generation",
     name: "generation",
@@ -45,8 +37,8 @@ export const generalData = (pokemon: IPokemon, styles: any) => [
     name: "gender",
     value: (
       <>
-        {pokemon?.gender_rate === 0 || pokemon?.gender_rate !== 8 && <Male htmlColor="#000000" style={{ fontSize: "18px"}} />}
-        {pokemon?.gender_rate === 8 || pokemon?.gender_rate !== 0  && <Female htmlColor="#000000" style={{ fontSize: "18px"}} />}
+        {pokemon?.species.gender_rate === 0 || pokemon?.species.gender_rate !== 8 && <Male htmlColor="#000000" style={{ fontSize: "18px"}} />}
+        {pokemon?.species.gender_rate === 8 || pokemon?.species.gender_rate !== 0  && <Female htmlColor="#000000" style={{ fontSize: "18px"}} />}
       </>
     )
   }

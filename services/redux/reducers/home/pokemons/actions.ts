@@ -58,8 +58,6 @@ export const getAllPokemons = createAsyncThunk(
               pkm
                 .json()
                 .then((responsepkm) => {
-                  const types = responsepkm.types.map((type) => type.type.name);
-
                   params.context
                     .getDataFromCompleteURL(responsepkm.species.url)
                     .then((result) => result.json())
@@ -148,6 +146,9 @@ const pokemonsSlice = createSlice({
   reducers: {
     clearPokemons: (state) => {
       state.getPokemons = initialState.getPokemons;
+    },
+    clearPokemonById: (state) => {
+      state.getPokemonById = initialState.getPokemonById;
     }
   },
   extraReducers: (builder) => {
@@ -170,6 +171,7 @@ const pokemonsSlice = createSlice({
 
     builder.addCase(getPokemonById.pending, (state) => {
       state.getPokemonById.loadingPokemonById = true;
+      state.getPokemonById.currentPokemon = null;
     });
     builder.addCase(getPokemonById.fulfilled, (state, action) => {
       state.getPokemonById.loadingPokemonById = false;
@@ -184,6 +186,6 @@ const pokemonsSlice = createSlice({
   }
 });
 
-export const { clearPokemons } = pokemonsSlice.actions;
+export const { clearPokemons, clearPokemonById } = pokemonsSlice.actions;
 
 export default pokemonsSlice.reducer;
